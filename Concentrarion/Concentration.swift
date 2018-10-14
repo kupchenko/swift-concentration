@@ -13,6 +13,7 @@ class Concentration {
     var indexOfOneAreOnlyFaceUpCard: Int?
     var score:Int = 0
     var isGameOver = false
+    var seenIndexes = Set<Int>()
     
     
     init(numberOfPairsOfCards: Int) {
@@ -32,7 +33,12 @@ class Concentration {
                         isGameOver = true
                     }
                 } else {
-                    score -= 1
+                    if isAlreadySeenIndex(for: index) {
+                        score -= 1
+                    }
+                    if isAlreadySeenIndex(for: matchIndex) {
+                        score -= 1
+                    }
                 }
                 cards[index].isFaceUp = true
                 indexOfOneAreOnlyFaceUpCard = nil
@@ -44,6 +50,11 @@ class Concentration {
                 indexOfOneAreOnlyFaceUpCard = index
             }
         }
+        seenIndexes.insert(index)
+    }
+    
+    func isAlreadySeenIndex(for index: Int) -> Bool {
+        return seenIndexes.contains(index)
     }
 
     func isAllCardsAreMached() -> Bool{
@@ -61,6 +72,7 @@ class Concentration {
         isGameOver = false
         score = 0
         
+        seenIndexes.removeAll()
         cards.removeAll()
         createCards(numberOfPairsOfCards: numberOfPairsOfCards)
     }
