@@ -15,17 +15,8 @@ class Concentration {
     var isGameOver = false
     
     
-    init(numberOfPairsOfCars: Int) {
-        for _ in 1...numberOfPairsOfCars {
-            let card = Card()
-            cards.append(card)
-            cards.append(card) // puts a copy into array
-            
-            //or
-            //this way
-            // cards += [card, card]
-        }
-        cards.shuffle()
+    init(numberOfPairsOfCards: Int) {
+        resetGame(numberOfPairsOfCards: numberOfPairsOfCards)
     }
     
     func chooseCard(at index:Int) {
@@ -35,6 +26,7 @@ class Concentration {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                     score += 2
+                    print("Found match for cards with id=\(cards[index].id)")
                     if isAllCardsAreMached() {
                         print("Game is over")
                         isGameOver = true
@@ -62,6 +54,28 @@ class Concentration {
             }
         }
         return count == 0
+    }
+    
+    func resetGame(numberOfPairsOfCards: Int) {
+        indexOfOneAreOnlyFaceUpCard = nil
+        isGameOver = false
+        score = 0
+        
+        cards.removeAll()
+        createCards(numberOfPairsOfCards: numberOfPairsOfCards)
+    }
+    
+    func createCards(numberOfPairsOfCards: Int) {
+        for _ in 1...numberOfPairsOfCards {
+            let card = Card()
+            cards.append(card)
+            cards.append(card) // puts a copy into array
+            
+            //or
+            //this way
+            // cards += [card, card]
+        }
+        cards.shuffle()
     }
     
     //        for i in cards.indices {

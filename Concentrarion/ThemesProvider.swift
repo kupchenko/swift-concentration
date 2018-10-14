@@ -11,6 +11,11 @@ import Foundation
 struct ThemesProvider {
     var themes = Dictionary<String, Theme>()
 
+    static let defaultThemeName = "other"
+    
+    static let defaultThemeEmojies = ["👻", "🎃", "👑", "🐒", "👽", "🤡", "⛄️", "🏀", "❤️", "☂️", "🐳", "💩", "🧠", "🍄", "🎪"]
+    static let defaultTheme = Theme(title: ThemesProvider.defaultThemeName, emojiList: defaultThemeEmojies)
+    
     init() {
         var emojies = ["👻", "🎃", "☠️", "💀", "👺", "🤡", "🌑", "🍪", "🍫", "🍭", "🍬", "🍩", "🧚‍♂️", "🧛🏿‍♂️", "🧝🏽‍♀️"]
         var theme = Theme(title: "halloween", emojiList: emojies)
@@ -20,9 +25,7 @@ struct ThemesProvider {
         theme = Theme(title: "sport", emojiList: emojies)
         themes[theme.title] = theme
         
-        emojies = ["👻", "🎃", "👑", "🐒", "👽", "🤡", "⛄️", "🏀", "❤️", "☂️", "🐳", "💩", "🧠", "🍄", "🎪"]
-        theme = Theme(title: "other", emojiList: emojies)
-        themes[theme.title] = theme
+        themes[ThemesProvider.defaultThemeName] = ThemesProvider.defaultTheme
 
     }
     
@@ -30,10 +33,10 @@ struct ThemesProvider {
         self.themes[theme.title] = theme
     }
     
-    func provide(forName name: String) -> Theme? {
+    func provide(forName name: String) -> Theme {
         if let theme = themes[name] {
             return theme
         }
-        return themes["other"]
+        return ThemesProvider.defaultTheme
     }
 }

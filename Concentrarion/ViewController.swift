@@ -19,17 +19,15 @@ class ViewController: UIViewController {
     
     //Game items
     
-    lazy var game = Concentration(numberOfPairsOfCars: (cardButtons.count + 1)/2)
+    var game: Concentration!
     var themePicker: ThemePicker!
-    let themesProvider = ThemesProvider()
-
-    var cardEmojies = Dictionary<Int, String>()
-    var availableEmojies: Array<String>!
+    var themesProvider: ThemesProvider!
+    var emojiService: EmojiService!
     
     // On CLICK
 
     @IBAction func onClickStartNewGameBtn(_ sender: Any) {
-        resetGame(withName: themeTextField.text ?? "other")
+        resetGame(withName: themeTextField.text ?? ThemesProvider.defaultThemeName)
     }
     
     @IBAction func touchCard(_ sender: UIButton) {
@@ -42,20 +40,27 @@ class ViewController: UIViewController {
         }
     }
     
+    // Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
+        game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1)/2)
+        themesProvider = ThemesProvider()
         themePicker = ThemePicker(textField: themeTextField)
-        resetGame(withName: "other")
+        let theme = themesProvider.provide(forName: ThemesProvider.defaultThemeName)
+        emojiService = EmojiService(with: theme)
+        resetGame(withName: ThemesProvider.defaultThemeName)
     }
+    
+    // L
     func resetGame(withName name: String) {
         let theme = themesProvider.provide(forName: name)
-        availableEmojies = theme?.emojiList
-        game = Concentration(numberOfPairsOfCars: (cardButtons.count + 1)/2)
+        emojiService.reset(for: theme)
+        game.resetGame(numberOfPairsOfCards: (cardButtons.count + 1)/2)
         updateViewFromModel()
-        updateScoreLabel()
         themeTextField.text = name
-        print("Mew game started with name \(theme?.title ?? "unknown")")
+        print("Mew game started with name \(theme.title)")
     }
+    
     func updateScoreLabel() {
         scoreLabel.text = "Score: \(game.score)"
     }
@@ -65,7 +70,7 @@ class ViewController: UIViewController {
             let button = cardButtons[index]
             let card = game.cards[index]
             if card.isFaceUp {
-                button.setTitle(emoji(for: card), for: UIControl.State.normal)
+                button.setTitle(emojiService.emoji(for: card), for: UIControl.State.normal)
                 button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             } else {
                 button.setTitle("", for: UIControl.State.normal)
@@ -75,43 +80,14 @@ class ViewController: UIViewController {
         updateScoreLabel()
     }
     
-    func emoji(for card:Card) -> String {
-        if cardEmojies[card.id] == nil, availableEmojies.count > 0  {
-            let number = Int(arc4random_uniform(UInt32(availableEmojies.count)))
-            cardEmojies[card.id] = availableEmojies.remove(at: number)
-        }
-        print("For card '\(card.id)' added emoji '\(cardEmojies[card.id]!)'")
-        return cardEmojies[card.id] ?? "?"
-        
-        /*
-         
-         if let emoji = cardEmojies[card.id] {
-            return emoji
-         } else {
-            return "?"
-         }
-         
-         OR
-         
-         if cardEmojies[card.id] != nil {
-            return cardEmojies[card.id]!
-         } else {
-            return "?"
-         }
-         
-         */
-    }
-    
     func showGameResults() {
-        print("here \(game.isGameOver)")
         if game.isGameOver {
 
             let dialogMessage = UIAlertController(title: "Game is over", message: "Your score is \(game.score).", preferredStyle: .alert)
             
             // Create OK button with action handler
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-                print("Ok button tapped")
-                self.resetGame(withName: self.themeTextField.text ?? "other")
+                self.resetGame(withName: self.themeTextField.text ?? ThemesProvider.defaultThemeName)
             })
             
             dialogMessage.addAction(ok)

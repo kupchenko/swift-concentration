@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28710C302173BF040031570A /* EmojiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28710C2F2173BF040031570A /* EmojiService.swift */; };
 		28B887C02168EE5600081263 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887BF2168EE5600081263 /* AppDelegate.swift */; };
 		28B887C22168EE5600081263 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887C12168EE5600081263 /* ViewController.swift */; };
 		28B887C52168EE5600081263 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28B887C32168EE5600081263 /* Main.storyboard */; };
@@ -14,7 +15,6 @@
 		28B887CA2168EE5700081263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B887C92168EE5700081263 /* Assets.xcassets */; };
 		28B887CD2168EE5700081263 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28B887CB2168EE5700081263 /* LaunchScreen.storyboard */; };
 		28B887D82168EE5700081263 /* ConcentrarionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887D72168EE5700081263 /* ConcentrarionTests.swift */; };
-		28B887E421691F7500081263 /* EmojiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887E321691F7500081263 /* EmojiProvider.swift */; };
 		28B887E621692D3C00081263 /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887E521692D3C00081263 /* Concentration.swift */; };
 		28B887E921692E2A00081263 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887E821692E2A00081263 /* Group.swift */; };
 		28B887EB216A620E00081263 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887EA216A620E00081263 /* Theme.swift */; };
@@ -33,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28710C2F2173BF040031570A /* EmojiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiService.swift; sourceTree = "<group>"; };
 		28B887BC2168EE5600081263 /* Concentrarion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentrarion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B887BF2168EE5600081263 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28B887C12168EE5600081263 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +45,6 @@
 		28B887D32168EE5700081263 /* ConcentrarionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcentrarionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B887D72168EE5700081263 /* ConcentrarionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrarionTests.swift; sourceTree = "<group>"; };
 		28B887D92168EE5700081263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		28B887E321691F7500081263 /* EmojiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiProvider.swift; sourceTree = "<group>"; };
 		28B887E521692D3C00081263 /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
 		28B887E821692E2A00081263 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		28B887EA216A620E00081263 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -96,12 +96,12 @@
 				28B887C32168EE5600081263 /* Main.storyboard */,
 				28B887CE2168EE5700081263 /* Info.plist */,
 				28B887C62168EE5600081263 /* Concentrarion.xcdatamodeld */,
-				28B887E321691F7500081263 /* EmojiProvider.swift */,
 				28B887E521692D3C00081263 /* Concentration.swift */,
 				28B887E821692E2A00081263 /* Group.swift */,
 				28B887EA216A620E00081263 /* Theme.swift */,
 				28B887EC216A627900081263 /* ThemesProvider.swift */,
 				28B887EE216B9F0600081263 /* ThemePicker.swift */,
+				28710C2F2173BF040031570A /* EmojiService.swift */,
 			);
 			path = Concentrarion;
 			sourceTree = "<group>";
@@ -229,8 +229,8 @@
 				28B887ED216A627900081263 /* ThemesProvider.swift in Sources */,
 				28B887EF216B9F0600081263 /* ThemePicker.swift in Sources */,
 				28B887C22168EE5600081263 /* ViewController.swift in Sources */,
+				28710C302173BF040031570A /* EmojiService.swift in Sources */,
 				28B887E621692D3C00081263 /* Concentration.swift in Sources */,
-				28B887E421691F7500081263 /* EmojiProvider.swift in Sources */,
 				28B887E921692E2A00081263 /* Group.swift in Sources */,
 				28B887C82168EE5600081263 /* Concentrarion.xcdatamodeld in Sources */,
 				28B887C02168EE5600081263 /* AppDelegate.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 class ThemePicker: UIPickerView {
 
-    var themeChoices = ["other", "halloween", "sport"]
+    var themeChoices = [ThemesProvider.defaultThemeName, "halloween", "sport"]
     var themeChoice: String?
     
     let toolBar = UIToolbar()
@@ -49,13 +49,13 @@ class ThemePicker: UIPickerView {
     }
     
     @objc func donePicker() {
-        print("Click ThemePicker OK")
+        print("ThemePicker DONE сlick")
         themeTextField?.text = themeChoice
         themeTextField!.resignFirstResponder()
     }
     
     @objc func cancelButton() {
-        print("Click ThemePicker cancel")
+        print("ThemePicker CANCEL click")
         themeTextField!.resignFirstResponder()
     }
 }
