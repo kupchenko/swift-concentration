@@ -91,7 +91,7 @@
 		28B887BE2168EE5600081263 /* Concentrarion */ = {
 			isa = PBXGroup;
 			children = (
-				28B887E22168EEB000081263 /* Sopporting Files */,
+				28B887E22168EEB000081263 /* Supporting Files */,
 				28B887C12168EE5600081263 /* ViewController.swift */,
 				28B887C32168EE5600081263 /* Main.storyboard */,
 				28B887CE2168EE5700081263 /* Info.plist */,
@@ -115,14 +115,14 @@
 			path = ConcentrarionTests;
 			sourceTree = "<group>";
 		};
-		28B887E22168EEB000081263 /* Sopporting Files */ = {
+		28B887E22168EEB000081263 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				28B887BF2168EE5600081263 /* AppDelegate.swift */,
 				28B887C92168EE5700081263 /* Assets.xcassets */,
 				28B887CB2168EE5700081263 /* LaunchScreen.storyboard */,
 			);
-			path = "Sopporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
