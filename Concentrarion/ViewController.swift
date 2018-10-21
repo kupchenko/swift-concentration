@@ -31,9 +31,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchCard(_ sender: UIButton) {
+        let theme = themesProvider.provide(forName: themeTextField.text ?? ThemesProvider.defaultThemeName)
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
-            updateViewFromModel()
+            updateViewFromModel(currentTheme: theme)
             showGameResults()
         } else {
             print("Value is not set")
@@ -56,7 +57,7 @@ class ViewController: UIViewController {
         let theme = themesProvider.provide(forName: name)
         emojiService.reset(for: theme)
         game.resetGame(numberOfPairsOfCards: (cardButtons.count + 1)/2)
-        updateViewFromModel()
+        updateViewFromModel(currentTheme: theme)
         themeTextField.text = name
         print("Mew game started with name \(theme.title)")
     }
@@ -65,16 +66,17 @@ class ViewController: UIViewController {
         scoreLabel.text = "Score: \(game.score)"
     }
 
-    func updateViewFromModel()  {
+    func updateViewFromModel(currentTheme: Theme)  {
+        self.view.backgroundColor = currentTheme.themeColor.backgroundColor
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
             if card.isFaceUp {
                 button.setTitle(emojiService.emoji(for: card), for: UIControl.State.normal)
-                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                button.backgroundColor = currentTheme.themeColor.choosedCardColor
             } else {
                 button.setTitle("", for: UIControl.State.normal)
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : currentTheme.themeColor.cardColor
             }
         }
         updateScoreLabel()

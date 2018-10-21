@@ -11,9 +11,11 @@ import Foundation
 struct Theme {
     var title: String
     var emojiList: Array<String>
+    var themeColor: ThemeColor
     
-    init(title: String, emojiList: Array<String>) {
+    init(title: String, emojiList: Array<String>, themeColor: ThemeColor) {
         self.title = title
         self.emojiList = emojiList
+        self.themeColor = themeColor
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28386294217CA4F400EB1494 /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28386293217CA4F400EB1494 /* ThemeColor.swift */; };
 		28710C302173BF040031570A /* EmojiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28710C2F2173BF040031570A /* EmojiService.swift */; };
 		28B887C02168EE5600081263 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887BF2168EE5600081263 /* AppDelegate.swift */; };
 		28B887C22168EE5600081263 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887C12168EE5600081263 /* ViewController.swift */; };
@@ -16,7 +17,7 @@
 		28B887CD2168EE5700081263 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28B887CB2168EE5700081263 /* LaunchScreen.storyboard */; };
 		28B887D82168EE5700081263 /* ConcentrarionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887D72168EE5700081263 /* ConcentrarionTests.swift */; };
 		28B887E621692D3C00081263 /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887E521692D3C00081263 /* Concentration.swift */; };
-		28B887E921692E2A00081263 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887E821692E2A00081263 /* Group.swift */; };
+		28B887E921692E2A00081263 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887E821692E2A00081263 /* Card.swift */; };
 		28B887EB216A620E00081263 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887EA216A620E00081263 /* Theme.swift */; };
 		28B887ED216A627900081263 /* ThemesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887EC216A627900081263 /* ThemesProvider.swift */; };
 		28B887EF216B9F0600081263 /* ThemePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B887EE216B9F0600081263 /* ThemePicker.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28386293217CA4F400EB1494 /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		28710C2F2173BF040031570A /* EmojiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiService.swift; sourceTree = "<group>"; };
 		28B887BC2168EE5600081263 /* Concentrarion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentrarion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B887BF2168EE5600081263 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +48,7 @@
 		28B887D72168EE5700081263 /* ConcentrarionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrarionTests.swift; sourceTree = "<group>"; };
 		28B887D92168EE5700081263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28B887E521692D3C00081263 /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
-		28B887E821692E2A00081263 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		28B887E821692E2A00081263 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		28B887EA216A620E00081263 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		28B887EC216A627900081263 /* ThemesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesProvider.swift; sourceTree = "<group>"; };
 		28B887EE216B9F0600081263 /* ThemePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePicker.swift; sourceTree = "<group>"; };
@@ -70,6 +72,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28386290217CA46E00EB1494 /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				28386293217CA4F400EB1494 /* ThemeColor.swift */,
+				28B887EA216A620E00081263 /* Theme.swift */,
+				28B887EC216A627900081263 /* ThemesProvider.swift */,
+				28B887EE216B9F0600081263 /* ThemePicker.swift */,
+			);
+			path = theme;
+			sourceTree = "<group>";
+		};
+		28386291217CA48300EB1494 /* game */ = {
+			isa = PBXGroup;
+			children = (
+				28386292217CA4A400EB1494 /* displaying */,
+				28386290217CA46E00EB1494 /* theme */,
+				28B887E821692E2A00081263 /* Card.swift */,
+				28B887E521692D3C00081263 /* Concentration.swift */,
+			);
+			path = game;
+			sourceTree = "<group>";
+		};
+		28386292217CA4A400EB1494 /* displaying */ = {
+			isa = PBXGroup;
+			children = (
+				28710C2F2173BF040031570A /* EmojiService.swift */,
+			);
+			path = displaying;
+			sourceTree = "<group>";
+		};
 		28B887B32168EE5600081263 = {
 			isa = PBXGroup;
 			children = (
@@ -91,17 +123,12 @@
 		28B887BE2168EE5600081263 /* Concentrarion */ = {
 			isa = PBXGroup;
 			children = (
+				28386291217CA48300EB1494 /* game */,
 				28B887E22168EEB000081263 /* Supporting Files */,
 				28B887C12168EE5600081263 /* ViewController.swift */,
 				28B887C32168EE5600081263 /* Main.storyboard */,
 				28B887CE2168EE5700081263 /* Info.plist */,
 				28B887C62168EE5600081263 /* Concentrarion.xcdatamodeld */,
-				28B887E521692D3C00081263 /* Concentration.swift */,
-				28B887E821692E2A00081263 /* Group.swift */,
-				28B887EA216A620E00081263 /* Theme.swift */,
-				28B887EC216A627900081263 /* ThemesProvider.swift */,
-				28B887EE216B9F0600081263 /* ThemePicker.swift */,
-				28710C2F2173BF040031570A /* EmojiService.swift */,
 			);
 			path = Concentrarion;
 			sourceTree = "<group>";
@@ -231,10 +258,11 @@
 				28B887C22168EE5600081263 /* ViewController.swift in Sources */,
 				28710C302173BF040031570A /* EmojiService.swift in Sources */,
 				28B887E621692D3C00081263 /* Concentration.swift in Sources */,
-				28B887E921692E2A00081263 /* Group.swift in Sources */,
+				28B887E921692E2A00081263 /* Card.swift in Sources */,
 				28B887C82168EE5600081263 /* Concentrarion.xcdatamodeld in Sources */,
 				28B887C02168EE5600081263 /* AppDelegate.swift in Sources */,
 				28B887EB216A620E00081263 /* Theme.swift in Sources */,
+				28386294217CA4F400EB1494 /* ThemeColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
