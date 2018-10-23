@@ -11,27 +11,27 @@ import UIKit
 class ViewController: UIViewController {
 
     //UI items
-    @IBOutlet weak var themeTextField: UITextField!
+    @IBOutlet private weak var themeTextField: UITextField!
     
-    @IBOutlet var cardButtons: [UIButton]!
+    @IBOutlet private var cardButtons: [UIButton]!
     
-    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet private weak var scoreLabel: UILabel!
     
     //Game items
     
-    var game: Concentration!
-    var themePicker: ThemePicker!
-    var themesProvider: ThemesProvider!
-    var emojiService: EmojiService!
+    private var game: Concentration!
+    private var themePicker: ThemePicker!
+    private var themesProvider: ThemesProvider!
+    private var emojiService: EmojiService!
     
     // On CLICK
 
-    @IBAction func onClickStartNewGameBtn(_ sender: Any) {
-        resetGame(withName: themeTextField.text ?? ThemesProvider.defaultThemeName)
+    @IBAction private func onClickStartNewGameBtn(_ sender: Any) {
+        resetGame(withName: themeTextField.text ?? ThemesProvider.defaultTheme.title)
     }
     
-    @IBAction func touchCard(_ sender: UIButton) {
-        let theme = themesProvider.provide(forName: themeTextField.text ?? ThemesProvider.defaultThemeName)
+    @IBAction private func touchCard(_ sender: UIButton) {
+        let theme = themesProvider.provide(forName: themeTextField.text ?? ThemesProvider.defaultTheme.title)
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel(currentTheme: theme)
@@ -47,13 +47,13 @@ class ViewController: UIViewController {
         game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1)/2)
         themesProvider = ThemesProvider()
         themePicker = ThemePicker(textField: themeTextField)
-        let theme = themesProvider.provide(forName: ThemesProvider.defaultThemeName)
+        let theme = themesProvider.provide(forName: ThemesProvider.defaultTheme.title)
         emojiService = EmojiService(with: theme)
-        resetGame(withName: ThemesProvider.defaultThemeName)
+        resetGame(withName: ThemesProvider.defaultTheme.title)
     }
     
     // L
-    func resetGame(withName name: String) {
+    private func resetGame(withName name: String) {
         let theme = themesProvider.provide(forName: name)
         emojiService.reset(for: theme)
         game.resetGame(numberOfPairsOfCards: (cardButtons.count + 1)/2)
@@ -62,15 +62,15 @@ class ViewController: UIViewController {
         print("Mew game started with name \(theme.title)")
     }
     
-    func updateScoreLabel() {
+    private func updateScoreLabel() {
         scoreLabel.text = "Score: \(game.score)"
     }
 
-    func updateViewFromModel(currentTheme: Theme)  {
+    private func updateViewFromModel(currentTheme: Theme)  {
         self.view.backgroundColor = currentTheme.themeColor.backgroundColor
         for index in cardButtons.indices {
             let button = cardButtons[index]
-            let card = game.cards[index]
+            let card = game.card(for: index)
             if card.isFaceUp {
                 button.setTitle(emojiService.emoji(for: card), for: UIControl.State.normal)
                 button.backgroundColor = currentTheme.themeColor.choosedCardColor
@@ -82,14 +82,14 @@ class ViewController: UIViewController {
         updateScoreLabel()
     }
     
-    func showGameResults() {
+    private func showGameResults() {
         if game.isGameOver {
 
             let dialogMessage = UIAlertController(title: "Game is over", message: "Your score is \(game.score).", preferredStyle: .alert)
             
             // Create OK button with action handler
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-                self.resetGame(withName: self.themeTextField.text ?? ThemesProvider.defaultThemeName)
+                self.resetGame(withName: self.themeTextField.text ?? ThemesProvider.defaultTheme.title)
             })
             
             dialogMessage.addAction(ok)

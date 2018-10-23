@@ -98,6 +98,10 @@ class Concentration {
         cards.shuffle()
     }
     
+    func card(for index: Int) -> Card {
+        return self.cards[index]
+    }
+    
     //        for i in cards.indices {
     //            if cards[i].isFaceUp {
     //
