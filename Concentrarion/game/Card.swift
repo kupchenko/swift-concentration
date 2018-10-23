@@ -9,14 +9,13 @@
 import Foundation
 
 struct Card {
-    var id: Int
+    private(set) var id: Int
     var isFaceUp = false
     var isMatched = false
     
-    static var idFactory = 0
+    private static var idFactory = 0
     
-    
-    static func getUniqueId() -> Int {
+    private static func getUniqueId() -> Int {
         idFactory += 1
         return idFactory;
     }

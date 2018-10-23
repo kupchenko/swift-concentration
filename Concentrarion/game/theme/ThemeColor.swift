@@ -9,9 +9,9 @@
 import UIKit
 
 struct ThemeColor {
-    var cardColor: UIColor
-    var backgroundColor: UIColor
-    var choosedCardColor: UIColor
+    private(set) var cardColor: UIColor
+    private(set) var backgroundColor: UIColor
+    private(set) var choosedCardColor: UIColor
     
     init(cardColor: UIColor, backgroundColor: UIColor, choosedCardColor: UIColor) {
         self.cardColor = cardColor

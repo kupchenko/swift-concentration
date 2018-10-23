@@ -10,8 +10,8 @@ import Foundation
 
 struct EmojiService {
     
-    var cardEmojies = Dictionary<Int, String>()
-    var availableEmojies: Array<String>!
+    private var cardEmojies = Dictionary<Int, String>()
+    private var availableEmojies: Array<String>!
     
     init(with theme: Theme) {
         reset(for: theme)

@@ -9,11 +9,11 @@
 import Foundation
 
 class Concentration {
-    var cards = Array<Card>()
-    var indexOfOneAreOnlyFaceUpCard: Int?
-    var score:Int = 0
-    var isGameOver = false
-    var seenIndexes = Set<Int>()
+    private var cards = Array<Card>()
+    private var indexOfOneAreOnlyFaceUpCard: Int?
+    private(set) var score:Int = 0
+    private(set) var isGameOver = false
+    private var seenIndexes = Set<Int>()
     
     
     init(numberOfPairsOfCards: Int) {
@@ -28,17 +28,9 @@ class Concentration {
                     cards[index].isMatched = true
                     score += 2
                     print("Found match for cards with id=\(cards[index].id)")
-                    if isAllCardsAreMached() {
-                        print("Game is over")
-                        isGameOver = true
-                    }
+                    tryFinishGame()
                 } else {
-                    if isAlreadySeenIndex(for: index) {
-                        score -= 1
-                    }
-                    if isAlreadySeenIndex(for: matchIndex) {
-                        score -= 1
-                    }
+                    reculculateScoreOnCardsMismatch(index: index, matchIndex: matchIndex)
                 }
                 cards[index].isFaceUp = true
                 indexOfOneAreOnlyFaceUpCard = nil
@@ -53,11 +45,27 @@ class Concentration {
         seenIndexes.insert(index)
     }
     
-    func isAlreadySeenIndex(for index: Int) -> Bool {
+    private func tryFinishGame() {
+        if isAllCardsAreMached() {
+            print("Game is over")
+            isGameOver = true
+        }
+    }
+    
+    private func reculculateScoreOnCardsMismatch(index:Int, matchIndex:Int) {
+        if isAlreadySeenIndex(for: index) {
+            score -= 1
+        }
+        if isAlreadySeenIndex(for: matchIndex) {
+            score -= 1
+        }
+    }
+    
+    private func isAlreadySeenIndex(for index: Int) -> Bool {
         return seenIndexes.contains(index)
     }
 
-    func isAllCardsAreMached() -> Bool{
+    private func isAllCardsAreMached() -> Bool{
         var count = 0
         for card in cards {
             if (!card.isMatched) {
