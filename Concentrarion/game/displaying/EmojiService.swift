@@ -24,8 +24,7 @@ struct EmojiService {
     
     mutating func emoji(for card:Card) -> String {
         if cardEmojies[card.id] == nil, availableEmojies.count > 0  {
-            let number = Int(arc4random_uniform(UInt32(availableEmojies.count)))
-            cardEmojies[card.id] = availableEmojies.remove(at: number)
+            cardEmojies[card.id] = availableEmojies.remove(at: availableEmojies.count.arc4random)
         }
         return cardEmojies[card.id] ?? "?"
         
@@ -46,5 +45,17 @@ struct EmojiService {
          }
          
          */
+    }
+}
+
+extension Int {
+    var arc4random: Int {
+        if self > 0 {
+            return Int(arc4random_uniform(UInt32(self)))
+        } else if self < 0 {
+            return -Int(arc4random_uniform(UInt32(self)))
+        } else {
+            return 0
+        }
     }
 }
